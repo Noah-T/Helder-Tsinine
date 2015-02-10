@@ -1,0 +1,21 @@
+#headerImage {
+	margin: 0 auto;
+	display: block;
+	max-width: 90%;
+}
+
+h1 {
+	text-align: center;
+}
+
+input, select {
+	display: block;
+	margin: 0 auto;
+}
+
+#classSignup, button {
+	max-width: 310px;
+	margin: 10px auto;
+	display: block;
+
+}
