@@ -1,4 +1,72 @@
+body {
+	background-color: #1D54A2;
+}
+
+p {
+	color: white;
+	font-size: 2em;
+	margin: 20px;
+}
+
+#languageList li {
+	list-style: none;
+	color: white;
+	float: left;
+	margin: 10px;
+	font-size: .8em;
+}
+
+#languageList {
+	clear: both;
+}
+#mainHeader {
+	font-family: 'Indie Flower', cursive;
+	margin: 20px;
+	color: #FEB91D;
+	font-size: 4em;	
+}
+
+
+nav {
+	background-color: rgba(255, 255, 255, 0.5);
+}
+
+nav, .welcomeMessage {
+	color: white;
+	display: block;
+	clear: both;
+}
+
+nav li {
+	list-style: none;
+	font-size: 2em;
+	float: left;
+	padding: 10px;
+
+}
+
+.welcomeWrapper {
+	display: block;
+}
+#welcomeImage {
+	margin: 0 auto;
+	display: block;
+	max-width: 100%;
+}
+
+div.socialMedia {
+	width: 124px;
+	margin: 30px auto;
+}
+
+div.socialMedia img {
+	height: 60px;
+	width: 60px;
+}
+
+
 #headerImage {
+
 	margin: 0 auto;
 	display: block;
 	max-width: 90%;

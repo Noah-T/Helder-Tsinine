@@ -45,12 +45,13 @@ $("#createClassButton").click(function(e){
 		$("#createClass").hide();
 		$("#anotherClass").click(function(){
 			console.log("click");
-			$("#anotherClass").hide();
-			$("#finished").hide();
-			$("#successMessage").hide();
+			$("#anotherClass").remove();
+			$("#finished").remove();
+			$("#successMessage").remove();
 			$("#createClass").show();
 			$("#createClassHeader").show();	
 		});
+		console.log("little later");
 	},
 	error: function(error){
 
