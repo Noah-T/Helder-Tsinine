@@ -13,9 +13,23 @@ input, select {
 	margin: 0 auto;
 }
 
-#classSignup, button {
+textarea {
+	width: 310px;
+}
+
+#pickStartDate, #pickEndDate {
+	display: inline-block;
+	width: 100%;
+	margin: 10px;
+}
+
+#classSignup, #createClass, textarea, button {
 	max-width: 310px;
 	margin: 10px auto;
 	display: block;
+}
 
+.ui-datepicker-current-day {
+	background-color: yellow;
+	border-radius: 10px;
 }

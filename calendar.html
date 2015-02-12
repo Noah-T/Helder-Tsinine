@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Helder Tsinine</title>
+		<link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+	</head>	
+	<body>
+		<h1 id="createClassHeader">Create Class</h1>
+			<form id="createClass">
+				<input class="form-control" type="text" placeholder="Title" id="title">
+				<textarea placeholder="Description" id="description"></textarea>
+				<input class="form-control" type="text" placeholder="Location" id="location">
+				<input class="form-control" type="text" placeholder="Capacity" id="capacity">
+				<input class="form-control" type="text" placeholder="Price" id="price">
+				<div id="pickStartDate"></div>
+				<div id="pickEndDate"></div>
+				<select class="form-control" id="timeOfDay">
+					<option value="8">8 a.m.</option>
+					<option value="9">9 a.m.</option>
+					<option value="10">10 a.m.</option>
+					<option value="11">11 a.m.</option>
+					<option value="12">12 p.m.</option>
+					<option value="13">1 p.m.</option>
+					<option value="14">2 p.m.</option>
+					<option value="15">3 p.m.</option>
+					<option value="16">4 p.m.</option>
+					<option value="17">5 p.m.</option>
+					<option value="18">6 p.m.</option>
+					<option value="19">7 p.m.</option>
+					<option value="20">8 p.m.</option>
+					<option value="21">9 p.m.</option>
+				</select>
+				<button  id="createClassButton">Submit</button>
+			</form>
+		
+		
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+		<script src="http://www.parsecdn.com/js/parse-1.3.4.min.js"></script>
+		<script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+		<script type="text/javascript" src="javascript/javascript.js"></script>
+	</body>
+</html>
+
