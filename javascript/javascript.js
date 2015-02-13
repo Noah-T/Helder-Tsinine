@@ -16,6 +16,7 @@ var Class = function(title, location, capacity, price, startDate, endDate, timeO
 
 $("#createClassButton").click(function(e){
 	e.preventDefault();
+
 	var title = $("#title").val();
 	var location = $("#location").val();
 	var capacity = $("#capacity").val();
@@ -51,7 +52,13 @@ $("#createClassButton").click(function(e){
 			$("#createClass").show();
 			$("#createClassHeader").show();	
 		});
+
+		//if done creating classes, go back out to home page
+		$("#finished").click(function(){
+			window.location.href = "index.html";
+		});
 		console.log("little later");
+		document.getElementById("createClass").reset();
 	},
 	error: function(error){
 
