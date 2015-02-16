@@ -7,23 +7,49 @@ query.find({success:function(response){
 	classesInList = [];
 	for (var i = 0; i < response.length; i++) {
 		classesInList.push(response[i]);
-		$("#classList").append("<div class='individualClass' date-index='"+ i +"'><h2>" + response[i].attributes.title +"</h2></div>");
+		$("#classList").append("<div class='individualClass' data-index='"+ i +"'><h2>" + response[i].attributes.title +"</h2></div>");
 	};
 
 	$(".individualClass").click(function(){
-		$(this).append('<h1>Sign Up</h1>' + 
-			 '<form id="classSignup">' +
-				'<input class="form-control" type="text" placeholder="First Name">' +
-				'<input class="form-control" type="text" placeholder="Last Name">' +
-				'<input class="form-control" type="text" placeholder="Email">' +
-				'<select class="form-control" name="pickSession">' +
-					'<option value="1">2/18/15</option>' +
-					'<option value="2">2/28/15</option>' +
-					'<option value="3">3/10/15</option>' +
-					'<option value="4">3/17/15</option>' +
-				'</select>' +
-				'<button type="submit">Submit</button>' +
+		if ($("#classSignup").length < 1) {
+			var currentClass =  classesInList[$(this).data("index")];
+			debugger;
+			$(this).append('<h1>Sign Up</h1>' + 
+			 '<form id="classSignup" data-classindex'+ $(this).data("index")+ '>' +
+				'<input class="form-control" type="text" placeholder="First Name" id="firstName">' +
+				'<input class="form-control" type="text" placeholder="Last Name" id="lastName">' +
+				'<input class="form-control" type="text" placeholder="Email" id="email">' +
+				'<button id="submit">Submit</button>' +
 			"</form> ");
+			$("#submit").click(function(e){
+				e.preventDefault();
+				debugger;
+				var Atendee = Parse.Object.extend("Atendee");
+				var atendee = new Atendee();
+				var firstName = $("#firstName").val();
+				var lastName = $("#lastName").val();
+				var email = $("#email").val();
+				atendee.save(null, {
+					beforeSend: function(){
+						var spinner = new Spinner().spin();
+						$("#classSignup").appendChild(spinner.el);
+						console.log("beforeSend called");
+						debugger;
+					},
+					success: function(){
+					console.log("atendee saved");
+					var atendeesInCurrentClass = currentClass.relation("atendees"); 
+					atendeesInCurrentClass.add(atendee);
+					currentClass.save();
+
+					},
+					error:function(error){
+						console.log(error);
+					}
+				});
+			});
+		};
+		
 	});
 
 
