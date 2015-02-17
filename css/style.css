@@ -101,7 +101,7 @@ textarea {
 	margin: 10px;
 }
 
-#classSignup, #createClass, textarea, button {
+#createClass, textarea, button {
 	max-width: 310px;
 	margin: 10px auto;
 	display: block;
