@@ -111,3 +111,7 @@ textarea {
 	background-color: yellow;
 	border-radius: 10px;
 }
+
+div.form-row {
+	width: 100%;
+}

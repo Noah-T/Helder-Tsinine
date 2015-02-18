@@ -17,6 +17,12 @@ var opts = {
   left: '50%' // Left position relative to parent
 };
 
+
+  // This identifies your website in the createToken call below
+  Stripe.setPublishableKey('pk_test_vXNldjlBZnauTG1OPxYDKJtD');
+  // ...
+
+
 Parse.initialize("HrQVtMtHNTg2ZCq1D03PyBqtScEL7f5ttRhV1YYh", "LhO8pkPR9uM1xkMTY3AWzBxQDvBY81wco0yArUfz");
 var classesInList;
 var Class = Parse.Object.extend("Class");
@@ -36,10 +42,10 @@ query.find({success:function(response){
 			$(this).append('<h1>Sign Up</h1>' + 
 				'<div class="container">' +
 					'<div class="row">' +
-						'<div class="col-md-6">' +
+						'<div class="col-sm-6">' +
 							'<p>This class is the absolute greatest.This class is the absolute greatest.This class is the absolute greatest.This class is the absolute greatest.</p>' +
 						'</div>' +
-					 '<div class="col-md-6">' +
+					 '<div class="col-sm-6" id="formColumn">' +
 						 '<form id="classSignup" data-classindex'+ $(this).data("index")+ '>' +
 							'<input class="form-control" type="text" placeholder="First Name" id="firstName">' +
 							'<input class="form-control" type="text" placeholder="Last Name" id="lastName">' +
@@ -67,7 +73,69 @@ query.find({success:function(response){
 						atendeesInCurrentClass.add(atendee);
 						currentClass.save();
 						spinner.stop();
+						$("#classSignup").hide();
+						function stripeResponseHandler(status, response) {
+  var $form = $('#payment-form');
 
+  if (response.error) {
+    // Show the errors on the form
+    $form.find('.payment-errors').text(response.error.message);
+    $form.find('button').prop('disabled', false);
+    debugger;
+  } else {
+  	console.log(response);
+  	debugger;
+    // response contains id and card, which contains additional card details
+    var token = response.id;
+    // Insert the token into the form so it gets submitted to the server
+    $form.append($('<input type="hidden" name="stripeToken" />').val(token));
+    // and submit
+    $form.get(0).submit();
+  }
+};
+						$("#formColumn").append(
+							'<form action="" method="POST" id="payment-form">' +
+  '<span class="payment-errors"></span>' +
+
+  '<div class="form-row">' +
+    '<label>' +
+      '<span>Card Number</span>' +
+      '<input type="text" size="20" data-stripe="number"/>' +
+    '</label>' +
+  '</div>' +
+
+  '<div class="form-row">' +
+    '<label>' +
+      '<span>CVC</span>' +
+      '<input type="text" size="4" data-stripe="cvc"/>' +
+    '</label>' +
+  '</div>' +
+
+  '<div class="form-row">' +
+    '<label>' +
+      '<span>Expiration (MM/YYYY)</span>' +
+      '<input type="text" size="2" data-stripe="exp-month"/>' +
+    '</label>' +
+    '<span> / </span>' +
+    '<input type="text" size="4" data-stripe="exp-year"/>' +
+  '</div>' +
+
+  '<button type="submit">Submit Payment</button>' +
+'</form>'
+							);
+						jQuery(function($) {
+  $('#payment-form').submit(function(event) {
+    var $form = $(this);
+
+    // Disable the submit button to prevent repeated clicks
+    $form.find('button').prop('disabled', true);
+
+    Stripe.card.createToken($form, stripeResponseHandler);
+
+    // Prevent the form from submitting with the default action
+    return false;
+  });
+});
 					},
 					error:function(error){
 						console.log(error);
