@@ -37,22 +37,25 @@ query.find({
   	}
 
   	$(".individualClass").click(function(){
+
   		if ($("#register").length < 1) {
   			var currentClass =  classesInList[$(this).data("index")];
 
   			$(this).append('<h1>Sign Up</h1>' + 
-  				'<div class="container">' +
+  				'<div class="container" id="formContainer">' +
   					'<div class="row">' +
             '<div class="col-sm-6"><img src="images/withkids2.jpg" id="welcomeImage">  </div>'+  
   						'<div class="col-sm-6">' +
-  							'<p class="copyParagraph">Music and dance has been bringing people together for generations; infants and toddlers are no exception. Children and parents will enjoy rhythms and melodies from around the world while dancing and singing along. Children will also practice playing various percussion instruments during the class.</p>'+ +
+  							'<p class="copyParagraph">Music and dance has been bringing people together for generations; infants and toddlers are no exception. Children and parents will enjoy rhythms and melodies from around the world while dancing and singing along. Children will also practice playing various percussion instruments during the class.</p>'+ 
   						'</div>' +  
 
   					'</div>' + 
-  				'</div>' +
-          '<button id="register">Register</button>');
+  				'</div>');
+        $(this).after('<button id="register">Register</button>');
+          
 
         $("#register").click(function(){
+
           if (Parse.User.current()) {
             //proceed with user
           } else {
