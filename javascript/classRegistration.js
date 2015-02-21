@@ -55,9 +55,10 @@ query.find({
           
 
         $("#register").click(function(){
-
+          console.log("register was clicked");
           if (Parse.User.current()) {
             //proceed with user
+            //to do...
           } else {
             //if they don't have an account, or aren't logged in
             //create overlay 
@@ -159,6 +160,7 @@ $("#signUp").click(function(e){
             user.signUp(null, {
               success: function(){
                 console.log("new user created");
+                $("#createAccount").hide();
               },
               error: function(error){
                 //oops
