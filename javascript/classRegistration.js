@@ -65,6 +65,7 @@ query.find({
             $("body").append("<div id='lightboxOverlay'></div>");
             $("body").append("<div id='accountSignup'></div>");
             $("#accountSignup").append(
+              '<img src="images/x-icon.png" id="x-icon">'+
               '<h1>Create Account</h1>'+
               '<form id="createAccount">'+
 
@@ -101,6 +102,11 @@ query.find({
                 '<button id="signUp">Sign Up</button>'+
               
               '</form>');
+$("#x-icon").click(function(){
+  //dismiss form
+  $("#lightboxOverlay").remove();
+  $("#accountSignup").remove();
+});
 $("#signUp").click(function(e){
             console.log("signup clicked");
             e.preventDefault();

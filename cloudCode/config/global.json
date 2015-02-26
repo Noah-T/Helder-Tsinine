@@ -1,0 +1,14 @@
+{
+    "applications": {
+        "Helder Tsinine": {
+            "applicationId": "HrQVtMtHNTg2ZCq1D03PyBqtScEL7f5ttRhV1YYh", 
+            "masterKey": "sRIXvvNvpCFOh4LBqqgt0TMPZPuluE6Wp2EG41MZ"
+        }, 
+        "_default": {
+            "link": "Helder Tsinine"
+        }
+    }, 
+    "global": {
+        "parseVersion": "1.3.4"
+    }
+}
