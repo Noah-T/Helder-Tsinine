@@ -9,6 +9,10 @@ p {
 	margin: 20px;
 }
 
+.centerText {
+	text-align: center;
+}
+
 #languageList li {
 	list-style: none;
 	color: white;
@@ -165,4 +169,25 @@ div.form-row {
 	width: 300px;
 	margin: 5px auto;
 
+}
+
+/* 
+Contact Page
+*/
+
+#contactForm input, #contactForm textarea, #contactForm button
+{
+	display: block;
+	width: 300px;
+	padding: 10px 0;
+	margin: 10px auto;
+}
+
+#contactForm textarea {
+	height: 180px;
+	resize:none;
+}
+
+#contactTitle {
+	color: white;
 }
